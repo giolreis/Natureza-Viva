@@ -12,13 +12,13 @@
     <header class="header">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <a class="navbar-brand logo" href="#">🌱 Natureza Viva</a>
+                <a class="navbar-brand logo" href="index.jsp">🌱 Natureza Viva</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.jsp">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="contatos.jsp">Contatos</a></li>
                         <li class="nav-item"><a class="nav-link active" href="sobrenos.jsp">Sobre nós</a></li>
                         <li class="nav-item"><a class="btn btn-outline-success" href="login.jsp">Login</a></li>
