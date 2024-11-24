@@ -9,24 +9,21 @@
         return;
     }
 
-    // Funções de cadastro de espaço, agendamento e consulta de agendamentos
 %>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Painel de Administração</title>
+    <title>Painel do Usuário</title>
 </head>
 <body>
-    <h2>Bem-vindo, Administrador!</h2>
+    <h2>Bem-vindo, usuário!</h2>
     <p>O que você gostaria de fazer?</p>
     
     <ul>
-        <li><a href="cadastrarEspaco.jsp">Cadastrar Espaços</a></li>
-        <li><a href="cadastrarAgendamento.jsp">Cadastrar Agendamento</a></li>
-        <li><a href="consultarAgendamentos.jsp">Consultar Agendamentos</a></li>
-        <li><a href="alterarExcluirEspaco.jsp">Alterar ou Excluir Espaços</a></li>
-        <li><a href="avaliarAgendamento.jsp">Avaliar Agendamento</a></li>
+        <li><a href="cadastrarAluguel.jsp">alugar Espaço</a></li>
+        <li><a href="EditarAluguel.jsp">Editar aluguel</a></li>
+        <li><a href="consultarAgendamentosUsuario.jsp">Consultar alugueis</a></li>
     </ul>
 
     <form action="logout.jsp" method="POST">
