@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.sql.*, javax.servlet.*, javax.servlet.http.*" %>
-<%
+<%-- <%
 
     String username = (String) session.getAttribute("username");
 
@@ -10,7 +10,7 @@
     }
 
     // Funções de cadastro de espaço, agendamento e consulta de agendamentos
-%>
+%> --%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

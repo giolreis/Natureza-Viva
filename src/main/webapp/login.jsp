@@ -21,9 +21,9 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#">Menu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contatos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contatos.jsp">Contatos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Projetos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Sobre nós</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sobrenos.jsp">Sobre nós</a></li>
                 </ul>
                 
             <div class="navbar-login">
