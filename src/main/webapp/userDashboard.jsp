@@ -39,7 +39,7 @@
         <div class="button-container">
             <div class="button-box">
                 <img src="img/alugarEspaco.avif" alt="Alugar Espaço">
-                <button class="btn">Alugar Espaço</button>
+                <a href="alugarespaco.jsp" class="btn">Alugar Espaço</a>
             </div>
             <div class="button-box">
                 <img src="img\editarAluguel.jpg" alt="Editar Aluguel">
