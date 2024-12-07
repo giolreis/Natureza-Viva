@@ -24,9 +24,11 @@
     <ul>
         <li><a href="cadastrarEspaco.jsp">Cadastrar Espaços</a></li>
         <li><a href="cadastroAgendamento.jsp">Cadastrar Agendamento</a></li>
-        <li><a href="consultarAgendamentos.jsp">Consultar Agendamentos</a></li>
+        <li><a href="consultarAgendamentos.jsp">Consultar Agendamentos por Mês</a></li>
+        <li><a href="consultarAgendamentosEspaco.jsp">Consultar Agendamentos por Espaço</a></li>
         <li><a href="alterarExcluirEspaco.jsp">Alterar ou Excluir Espaços</a></li>
         <li><a href="avaliarAgendamento.jsp">Avaliar Agendamento</a></li>
+        <li><a href="confirmarAgendamento.jsp">Confirmar Agendamento</a></li>
     </ul>
 
     <form action="logout.jsp" method="POST">

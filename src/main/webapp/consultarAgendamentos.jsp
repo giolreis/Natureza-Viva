@@ -26,13 +26,16 @@
 
             if(data>=1 && data<=12){
                 
-                PreparedStatement statement=conexao.prepareStatement("select * from agendamentos where month(data_inicio) like ? order by day(data_inicio)");
+                PreparedStatement statement=conexao.prepareStatement("select * from agendamentos a inner join espacos e on e.id = a.id_espaco inner join usuarios u on u.id = a.id_usuario where month(data_inicio) like ? order by day(data_inicio)");
                 statement.setString(1, "%" + data + "%");
                 ResultSet listar=statement.executeQuery();
                 int reg=0;
                 while(listar.next()){
-                    out.println(listar.getString("id_espaco"));
-                    out.println(listar.getString("day(data_inicio)")+"<p>");
+                    out.println(listar.getString("e.nome"));
+                    out.println(listar.getString("u.nome"));
+                    out.println(listar.getString("data_inicio"));
+                    out.println(listar.getString("data_fim"));
+                    // out.println(listar.getString("day(data_inicio)")+"<p>");
                     reg++;
                 }	
                 out.println("<hr>Foram localizados " + reg + " registros.");  
