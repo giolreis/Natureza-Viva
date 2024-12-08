@@ -31,7 +31,7 @@
     </ul>
 
     <form action="logout.jsp" method="POST">
-        <a href ="login.jsp" class="btn_sair">  <% session.invalidate(); %>Sair</button>
+        <%-- <a href ="login.jsp" class="btn_sair">  <% session.invalidate(); %>Sair</button> --%>
     </form>
 
     <%-- <%
