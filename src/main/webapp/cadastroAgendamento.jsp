@@ -72,6 +72,7 @@
     conn.close();
 %>
         </tbody>
+        </table>
 
         <form method="POST">
             <div class="mb-3">
@@ -127,16 +128,29 @@
             String fim=request.getParameter("fim");
 
             try{
-            
-                Class.forName("com.mysql.jdbc.Driver");
-                PreparedStatement inserir=conexao.prepareStatement("insert into agendamentos (id_usuario, id_espaco, data_inicio, data_fim) values(4,?,?,?)");
-                inserir.setString(1,id); 
-                inserir.setString(2,inicio); 
-                inserir.setString(3,fim); 
-                inserir.execute(); 
-                out.println("Agendamento Gravado!");
-                inserir.close();		
 
+                Class.forName("com.mysql.jdbc.Driver");
+                PreparedStatement select = conexao.prepareStatement("select id from usuarios where nome = 'placeholder'");
+                ResultSet rs_select = select.executeQuery();  
+
+                while (rs_select.next()) {
+
+                    int id_placeholder = rs_select.getInt("id");
+                    // out.println(id);
+            
+                    PreparedStatement inserir=conexao.prepareStatement("insert into agendamentos (id_usuario, id_espaco, data_inicio, data_fim) values(?,?,?,?)");
+                    inserir.setInt(1,id_placeholder);
+                    inserir.setString(2,id); 
+                    inserir.setString(3,inicio); 
+                    inserir.setString(4,fim); 
+                    inserir.execute(); 
+                    out.println("Agendamento Gravado!");
+                    inserir.close();	
+
+                }
+
+                select.close();
+	
             }catch (ClassNotFoundException erroClass){
                 out.println("Class Driver não foi localizado, erro = "+erroClass);}
        

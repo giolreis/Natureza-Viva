@@ -27,12 +27,11 @@
         <li><a href="consultarAgendamentos.jsp">Consultar Agendamentos por Mês</a></li>
         <li><a href="consultarAgendamentosEspaco.jsp">Consultar Agendamentos por Espaço</a></li>
         <li><a href="alterarExcluirEspaco.jsp">Alterar ou Excluir Espaços</a></li>
-        <li><a href="avaliarAgendamento.jsp">Avaliar Agendamento</a></li>
         <li><a href="confirmarAgendamento.jsp">Confirmar Agendamento</a></li>
     </ul>
 
     <form action="logout.jsp" method="POST">
-        <button type="submit">Sair</button>
+        <a href ="login.jsp" class="btn_sair">  <% session.invalidate(); %>Sair</button>
     </form>
 
     <%-- <%

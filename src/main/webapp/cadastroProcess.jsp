@@ -1,38 +1,49 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.sql.*, java.io.*, javax.servlet.*, javax.servlet.http.*" %>
-<%
-    String username = request.getParameter("username");
-    String password = request.getParameter("password");
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*, java.security.*, javax.servlet.*, javax.servlet.http.*" %>
+<%@ include file="conexao.jsp" %>
+<% 
+    if(request.getMethod().equals("POST")){
 
-    Connection con = null;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
+        String nome=request.getParameter("nome");
+        String senha=request.getParameter("senha");
+        String confirmacao=request.getParameter("confirmacao");
+        String email=request.getParameter("email");
+        String usuario=request.getParameter("escolha");
+        String cpf=request.getParameter("cpf");
 
-    try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/naturezaviva", "root", "senha");
-        String query = "SELECT * FROM usuarios WHERE username = ? AND password = ?";
-        ps = con.prepareStatement(query);
-        ps.setString(1, username);
-        ps.setString(2, password);
-        rs = ps.executeQuery();
+        if(senha.equals(confirmacao)){
 
-        if (rs.next()) {
-            session.setAttribute("username", username); // Salva o nome de usuário na sessão
-            response.sendRedirect("index.jsp"); // Redireciona para a página inicial
-        } else {
-            out.println("<h3 class='text-danger'>Usuário ou senha inválidos.</h3>");
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-        out.println("<h3 class='text-danger'>Erro de conexão com o banco de dados.</h3>");
-    } finally {
-        try {
-            if (rs != null) rs.close();
-            if (ps != null) ps.close();
-            if (con != null) con.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+            PreparedStatement statement = conexao.prepareStatement("SELECT * FROM usuarios where email like ?");
+            statement.setString(1,email); 
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                out.print("O email já foi cadastrado!");
+                return;
+            }
+
+            try{
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            PreparedStatement inserir=conexao.prepareStatement("insert into usuarios (nome, email, senha, cpf, tipo_usuario, data_cadastro, status) values(?,?,?,?,?, now(), 'ativo')");
+            inserir.setString(1,nome); 
+            inserir.setString(2,email); 
+            inserir.setString(3,senha); 
+            inserir.setString(4,cpf); 
+            inserir.setString(5,usuario); 
+            inserir.execute(); 
+            out.println("Usuário Gravado!");
+            inserir.close();		
+
+            }catch (ClassNotFoundException erroClass){
+                out.println("Class Driver não foi localizado, erro = "+erroClass);}
+    
+            catch (SQLException e){
+                out.println("Erro na conexão ao banco de dados. Detalhes: " + e.getMessage());
+            }				
+        }else{
+            out.print("As senhas devem ser iguais");
         }
     }
+    
 %>

@@ -43,18 +43,18 @@
             </div>
             <div class="button-box">
                 <img src="img\editarAluguel.jpg" alt="Editar Aluguel">
-                <button class="btn">Editar Aluguel</button>
+                <a href="editarAluguel.jsp" class="btn">Editar Aluguel</a>
             </div>
             <div class="button-box">
                 <img src="img\consultarAluguel.jpg" alt="Consultar Alugueis">
-                <button class="btn">Consultar Aluguéis</button>
+                <a href="consultarAluguel.jsp" class="btn">Consultar Aluguéis</a>
             </div>
         </div>
 
         <!-- Botão de Sair -->
         <div class="logout-container">
             <form action="logout.jsp" method="POST">
-                <button type="submit" class="btn-sair">Sair</button>
+                <%-- <a href ="login.jsp" class="btn_sair">  <% session.invalidate(); %>Sair</button> --%>
             </form>
         </div>
     </div>

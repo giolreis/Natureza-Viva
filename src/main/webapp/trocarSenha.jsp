@@ -38,11 +38,6 @@
     </div>
     <div class="content">
         <div class="login-box">
-            
-            <div class="button-group">
-                <button class="btn btn-custom">Login</button>
-                <button class="btn btn-custom">Cadastre-se</button>
-            </div>
             <form method="POST" action="loginProcess.jsp" class="forms-dados">
                 <label for="nome">Nome</label>
                 <input type="text" id="nome_login" name="nome_login" class="form-control" placeholder="Digite seu nome">
@@ -141,3 +136,4 @@
             // }
         %>
 </html>
+98

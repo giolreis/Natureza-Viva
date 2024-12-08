@@ -72,6 +72,21 @@
             }
         });
     </script>
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 50px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light">
@@ -88,55 +103,121 @@
         </div>
     </nav>
     <h1>Encontre seu Espaço</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</td>
+                <th>Espaço</th>
+                <th>Capacidade</th>
+                <th>Data Início</th>
+                <th>Data Fim</th>
+            </tr>
+        </thead>
+        <tbody>
+        <%
+    Connection conn = null;
+    Statement stmt = null;
+    ResultSet rs = null;
+
+    // Estabelecer conexão com o banco de dados
+    Class.forName("com.mysql.jdbc.Driver");
+    conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/naturezaviva","root","");
+
+    // Executar consulta
+    String sql = "SELECT * FROM agendamentos a inner join espacos e on e.id = a.id_espaco inner join usuarios u on u.id = a.id_usuario where u.nome = 'placeholder'";
+    stmt = conn.createStatement();
+    rs = stmt.executeQuery(sql);
+
+    // Iterar pelos resultados e gerar linhas da tabela
+    while (rs.next()) {
+
+        int id = rs.getInt("a.id");
+        String espaco = rs.getString("e.nome");
+        String capacidade = rs.getString("e.capacidade");
+        String inicio = rs.getString("data_inicio");
+        String fim = rs.getString("data_fim");
+%>
+        <tr>
+            <td><%= id %></td>
+            <td><%= espaco %></td>
+            <td><%= capacidade %></td>
+            <td><%= inicio %></td>
+            <td><%= fim %></td>
+        </tr>
+<%
+    }
+
+    // Fechar recursos
+    rs.close();
+    stmt.close();
+    conn.close();
+%>
+        </tbody>
+        </table>
+
     <div class="search-bar">
-        
-        <input type="text" id="search-name" placeholder="Nome do Espaço">
-        <input type="date" id="search-start">
-        <input type="date" id="search-end">
-        <button id="search-btn">Buscar</button>
+        <form method="POST">
+            <input type="int" id="search-name" name="id_agendamento" placeholder="0">
+            <button type="submit" class="btn btn-success w-100">Registrar</button>
+        </form>
     </div>
 
     <div class="container">
         <!-- Lista de espaços -->
-        <div class="spaces">
-            <%
-                PreparedStatement stmt = null;
-                ResultSet rs = null;
-
-                try {
-                    String sql = "SELECT * FROM espacos WHERE status='disponivel'";
-                    stmt = conexao.prepareStatement(sql);
-                    rs = stmt.executeQuery();
-
-                    while (rs.next()) {
-                        int idEspaco = rs.getInt("id");
-                        String nome = rs.getString("nome");
-                        String descricao = rs.getString("descricao");
-                        int capacidade = rs.getInt("capacidade");
-                        double preco = rs.getDouble("preco");
-                        String dataInicio = rs.getString("data_inicio");  // Exemplo de data
-                        String dataFim = rs.getString("data_fim"); // Exemplo de data
-            %>
-            <div class="space-card" data-id="<%= idEspaco %>" data-start="<%= dataInicio %>" data-end="<%= dataFim %>">
-                <h3 class="space-name"><%= nome %></h3>
-                <p><%= descricao %></p>
-                <p>Capacidade: <%= capacidade %></p>
-                <p>Preço: R$ <%= preco %></p>
-            </div>
-            <%
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    if (rs != null) rs.close();
-                    if (stmt != null) stmt.close();
-                    if (conexao != null) conexao.close();
-                }
-            %>
-        </div>
 
         <!-- Calendário -->
-        <div id="calendar"></div>
     </div>
+
+    <% 
+
+        if(request.getMethod().equals("POST")){
+
+            String id_agendamento=request.getParameter("id_agendamento");
+            String username = (String) session.getAttribute("username");
+            String id_user = (String) session.getAttribute("id");
+
+            Class.forName("com.mysql.jdbc.Driver");
+            PreparedStatement selectA = conexao.prepareStatement("select * from agendamentos where id_usuario = ? and status <> 'finalizado' and status <> 'cancelado'");
+            selectA.setString(1, id_user);
+            ResultSet rs_selectA = selectA.executeQuery();
+
+            if(!rs_selectA.next()){
+                try{
+                    out.println(username);
+                    
+                    Class.forName("com.mysql.jdbc.Driver");
+                    PreparedStatement select = conexao.prepareStatement("select id from usuarios where nome = ?");
+                    select.setString(1, username);
+                    ResultSet rs_select = select.executeQuery();  
+
+                    while (rs_select.next()) {
+
+                        int id = rs_select.getInt("id");
+                        out.println(id);
+                        out.println(id_agendamento);
+                        PreparedStatement update = conexao.prepareStatement("update agendamentos set id_usuario = ? where id = ?");
+                        update.setInt(1, id);
+                        update.setString(2, id_agendamento);
+                        update.execute(); 
+                        update.close();
+
+                    }
+
+                    select.close();		
+
+                    out.println("Alteração salva com sucesso!");
+
+                }catch (ClassNotFoundException erroClass){
+                    out.println("Class Driver não foi localizado, erro = "+erroClass);}
+
+                catch (SQLException e){
+                    out.println("Erro na conexão ao banco de dados. Detalhes: " + e.getMessage());
+                }
+            }				
+        }else{
+            out.print("Não é possível realizar dois agendamentos ao mesmo tempo!");
+        }
+
+    %>
 </body>
 </html>

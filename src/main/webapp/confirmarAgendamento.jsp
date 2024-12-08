@@ -30,7 +30,7 @@
 <body>
     <%@ include file="navbar.jsp" %>
     <div class="container my-5">
-        <h2 class="text-center text-success mb-4">Alterar Status Agendamentos</h2>
+        <h2 class="text-center text-success mb-4">Alterar ou Avaliar Agendamentos</h2>
         
         <table>
         <thead>
@@ -60,6 +60,7 @@
 
     // Iterar pelos resultados e gerar linhas da tabela
     while (rs.next()) {
+
         int id = rs.getInt("a.id");
         String espaco = rs.getString("e.nome");
         String usuario = rs.getString("u.nome");
@@ -84,6 +85,7 @@
     conn.close();
 %>
         </tbody>
+        </table>
 
         <form method="POST">
             <div class="mb-3">
@@ -135,6 +137,23 @@
                 
                 if("finalizado".equals(status)){
 
+                    PreparedStatement select = conexao.prepareStatement("select id_espaco from agendamentos where id=?");
+                    select.setString(1,id_agendamento);  
+                    ResultSet rs_select = select.executeQuery();  
+
+                    // Iterar pelos resultados e gerar linhas da tabela
+                    while (rs_select.next()) {
+
+                        int id_espaco = rs_select.getInt("id_espaco");
+                        PreparedStatement update2=conexao.prepareStatement("update espacos set status = 'disponivel' where id = ?");
+                        update2.setInt(1, id_espaco);
+                        update2.execute(); 
+                        update2.close();
+
+                    }
+
+                    select.close();	
+
                     PreparedStatement update=conexao.prepareStatement("update agendamentos set status = ? where id = ?");
                     update.setString(1,status); 
                     update.setString(2,id_agendamento); 
@@ -148,6 +167,25 @@
                     insert.execute(); 
                     insert.close(); 
                 }else{
+
+                    if (status.equals("confirmado")){
+                        PreparedStatement select = conexao.prepareStatement("select id_espaco from agendamentos where id=?");
+                        select.setString(1,id_agendamento);  
+                        ResultSet rs_select = select.executeQuery();  
+
+                        // Iterar pelos resultados e gerar linhas da tabela
+                        while (rs_select.next()) {
+
+                        int id_espaco = rs_select.getInt("id_espaco");
+                        PreparedStatement update2=conexao.prepareStatement("update espacos set status = 'indisponivel' where id = ?");
+                        update2.setInt(1, id_espaco);
+                        update2.execute(); 
+                        update2.close();
+
+                        }
+
+                    select.close();	
+                    }
 
                     PreparedStatement update=conexao.prepareStatement("update agendamentos set status = ? where id = ?");
                     update.setString(1,status); 
