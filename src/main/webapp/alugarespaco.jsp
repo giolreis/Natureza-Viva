@@ -119,16 +119,13 @@
     Statement stmt = null;
     ResultSet rs = null;
 
-    // Estabelecer conexão com o banco de dados
     Class.forName("com.mysql.jdbc.Driver");
     conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/naturezaviva","root","");
 
-    // Executar consulta
     String sql = "SELECT * FROM agendamentos a inner join espacos e on e.id = a.id_espaco inner join usuarios u on u.id = a.id_usuario where u.nome = 'placeholder'";
     stmt = conn.createStatement();
     rs = stmt.executeQuery(sql);
 
-    // Iterar pelos resultados e gerar linhas da tabela
     while (rs.next()) {
 
         int id = rs.getInt("a.id");

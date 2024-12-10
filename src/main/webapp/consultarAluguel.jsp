@@ -77,7 +77,6 @@
                     int agendamentoId = rs.getInt("a.id");
                     String status = rs.getString("a.status");
                     
-                    // Verifica se o agendamento está confirmado para não permitir exclusão
                     if (!"confirmado".equals(agendamentoStatus)) {
             %>
             <tr>

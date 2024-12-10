@@ -54,7 +54,7 @@
         <!-- Botão de Sair -->
         <div class="logout-container">
             <form action="logout.jsp" method="POST">
-                <%-- <a href ="login.jsp" class="btn_sair">  <% session.invalidate(); %>Sair</button> --%>
+               <a href="login.jsp?action=logout" class="btn_sair">Sair</a><br>
             </form>
         </div>
     </div>

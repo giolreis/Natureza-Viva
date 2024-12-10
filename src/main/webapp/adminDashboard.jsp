@@ -23,7 +23,8 @@
     
     <ul>
         <li><a href="cadastrarEspaco.jsp">Cadastrar Espaços</a></li>
-        <li><a href="cadastroAgendamento.jsp">Cadastrar Agendamento</a></li>
+        <li><a href="cadastroAgendamento.jsp">Cadastrar Agendamentos</a></li>
+        <li><a href="excluirAgendamento.jsp">Excluir Agendamentos</a></li>
         <li><a href="consultarAgendamentos.jsp">Consultar Agendamentos por Mês</a></li>
         <li><a href="consultarAgendamentosEspaco.jsp">Consultar Agendamentos por Espaço</a></li>
         <li><a href="alterarExcluirEspaco.jsp">Alterar ou Excluir Espaços</a></li>
@@ -31,7 +32,7 @@
     </ul>
 
     <form action="logout.jsp" method="POST">
-        <%-- <a href ="login.jsp" class="btn_sair">  <% session.invalidate(); %>Sair</button> --%>
+        <a href="login.jsp?action=logout" class="a_outros">Sair</a><br>
     </form>
 
     <%-- <%

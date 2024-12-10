@@ -49,16 +49,13 @@
     Statement stmt = null;
     ResultSet rs = null;
 
-    // Estabelecer conexão com o banco de dados
     Class.forName("com.mysql.jdbc.Driver");
     conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/naturezaviva","root","");
 
-    // Executar consulta
     String sql = "SELECT * FROM agendamentos a inner join espacos e on e.id = a.id_espaco inner join usuarios u on u.id = a.id_usuario where a.status <> 'finalizado'";
     stmt = conn.createStatement();
     rs = stmt.executeQuery(sql);
 
-    // Iterar pelos resultados e gerar linhas da tabela
     while (rs.next()) {
 
         int id = rs.getInt("a.id");
@@ -79,7 +76,6 @@
 <%
     }
 
-    // Fechar recursos
     rs.close();
     stmt.close();
     conn.close();
@@ -141,7 +137,6 @@
                     select.setString(1,id_agendamento);  
                     ResultSet rs_select = select.executeQuery();  
 
-                    // Iterar pelos resultados e gerar linhas da tabela
                     while (rs_select.next()) {
 
                         int id_espaco = rs_select.getInt("id_espaco");
@@ -173,7 +168,6 @@
                         select.setString(1,id_agendamento);  
                         ResultSet rs_select = select.executeQuery();  
 
-                        // Iterar pelos resultados e gerar linhas da tabela
                         while (rs_select.next()) {
 
                         int id_espaco = rs_select.getInt("id_espaco");

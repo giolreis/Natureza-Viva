@@ -45,16 +45,13 @@
     Statement stmt = null;
     ResultSet rs = null;
 
-    // Estabelecer conexão com o banco de dados
     Class.forName("com.mysql.jdbc.Driver");
     conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/naturezaviva","root","");
 
-    // Executar consulta
     String sql = "SELECT nome, id FROM espacos";
     stmt = conn.createStatement();
     rs = stmt.executeQuery(sql);
 
-    // Iterar pelos resultados e gerar linhas da tabela
     while (rs.next()) {
         int espaco_id = rs.getInt("id");
         String espaco = rs.getString("nome");

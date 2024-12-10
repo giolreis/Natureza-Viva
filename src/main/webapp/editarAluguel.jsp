@@ -77,7 +77,6 @@
                     String agendamentoStatus = rs.getString("a.status");
                     int agendamentoId = rs.getInt("a.id");
                     
-                    // Verifica se o agendamento está confirmado para não permitir exclusão
                     if (!"confirmado".equals(agendamentoStatus)) {
             %>
             <tr>
@@ -105,8 +104,7 @@
             %>
         </tbody>
     </table>
-
-    <%-- Processar ação de exclusão --%>
+    
     <%
     if (request.getMethod().equals("POST")) {
         String action = request.getParameter("action");

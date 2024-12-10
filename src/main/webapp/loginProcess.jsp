@@ -20,17 +20,14 @@ if (request.getMethod().equals("POST")) {
             int id = listar.getInt("id");
 
             if (nomeDb.equals(nome) && senhaDb.equals(senha)) {
-                // Invalida sessão anterior, se existir
                 if (session != null) {
                     session.invalidate();
                 }
 
-                // Cria uma nova sessão
                 HttpSession novaSessao = request.getSession(true);
                 novaSessao.setAttribute("username", nomeDb);
                 novaSessao.setAttribute("id", id);
 
-                // Direciona com base no tipo de usuário
                 if (tipoUsuario.equals("usuario")) {
                     response.sendRedirect("userDashboard.jsp");
                 } else if (senhaDb.equals("123456")) {
