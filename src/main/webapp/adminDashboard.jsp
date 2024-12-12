@@ -1,15 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.sql.*, javax.servlet.*, javax.servlet.http.*" %>
-<%-- <%
-
-    String username = (String) session.getAttribute("username");
-
-    if (username == null) {
-        response.sendRedirect("login.jsp");
-        return;
-    }
-
-%> --%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -17,23 +7,22 @@
     <title>Painel do Administrador</title>
     <link rel="stylesheet" href="css/userDashborad.css">
 </head>
+<%@ include file="navbar.jsp" %>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img class="icon" src="img/iconUserPanel.png" alt="Ícone do usuário"> <!-- Ícone -->
-            Painel do Administrador
-        </a>
-            <div class="navbar-nav">
-                <a class="nav-link" href="#">Home</a>
-                <a class="nav-link" href="#">Ajuda</a>
-                <a class="nav-link" href="#">Perfil</a>
-            </div>
-        </div>
-    </nav>
+  
     <div class="container">
         <!-- Título "Bem-vindo" -->
-        <h2>Bem-vindo, <% String username = (String) session.getAttribute("username"); if (username != null) out.print(username); else out.print("Visitante"); %>!</h2>
+        <h2>Bem-vindo, 
+            <% 
+                // Declaração da variável username
+                String userName = (String) session.getAttribute("userName"); 
+                if (userName != null) { 
+                    out.print(userName); 
+                } else { 
+                    out.print("Visitante"); 
+                }
+            %>!
+        </h2>
 
         <!-- Contêiner dos botões -->
         <div class="button-container">
@@ -67,16 +56,8 @@
             </div>
         </div>
 
-        <!-- Botão de Sair -->
-        <div class="logout-container">
-            <form action="logout.jsp" method="POST">
-               <a href="login.jsp?action=logout" class="btn_sair">Sair</a><br>
-            </form>
-        </div>
     </div>
 
-    <%-- <%
-         out.println(username);
-    %> --%>
 </body>
+<%@ include file="footer.jsp" %>
 </html>

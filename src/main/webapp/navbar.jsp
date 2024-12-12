@@ -1,5 +1,6 @@
 
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %><header class="header">
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<header class="header">
     <head>
         <link rel="stylesheet" href="../webapp/css/navbar.css">
     </head>
@@ -11,10 +12,28 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.jsp">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.jsp">Início</a></li>
                     <li class="nav-item"><a class="nav-link" href="contatos.jsp">Contatos</a></li>
                     <li class="nav-item"><a class="nav-link" href="sobrenos.jsp">Sobre nós</a></li>
-                    <li class="nav-item"><a class="btn btn-outline-success" href="login.jsp">Login</a></li>
+                    
+                    <% 
+                    String username = (String) session.getAttribute("username");
+                    if (username != null) { 
+                    %>
+                        <!-- Se o usuário estiver logado, exibe o botão de Logout -->
+                        <li class="nav-item">
+                            <a class="btn btn-danger" href="logout.jsp">Logout</a>
+                        </li>
+                    <% 
+                    } else { 
+                    %>
+                        <!-- Se o usuário não estiver logado, exibe o botão de Login -->
+                        <li class="nav-item">
+                            <a class="btn btn-outline-success" href="login.jsp">Login</a>
+                        </li>
+                    <% 
+                    } 
+                    %>
                 </ul>
             </div>
         </div>
