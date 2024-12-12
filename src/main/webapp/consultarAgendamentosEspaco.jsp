@@ -69,7 +69,7 @@
         <input type="submit" value="Enviar">
     </form>
 
-    <a href ="adminDashboard.jsp.jsp" class="a_outros">Voltar</a><br>
+    <a href ="adminDashboard.jsp" class="a_outros">Voltar</a><br>
 
     <% 
         if(request.getParameter("id") != null){
