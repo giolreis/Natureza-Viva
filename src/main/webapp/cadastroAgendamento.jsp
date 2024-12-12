@@ -24,6 +24,7 @@
             background-color: #f4f4f4;
         }
     </style>
+    <link rel="stylesheet" href="../webapp/css/index.css">
 
 
 </head>

@@ -21,9 +21,12 @@
                     if (username != null) { 
                     %>
                         <!-- Se o usuário estiver logado, exibe o botão de Logout -->
+                        <li class="nav-item"><a class="nav-link" href="adminDashboard.jsp">Painel</a></li>
                         <li class="nav-item">
-                            <a class="btn btn-danger" href="logout.jsp">Logout</a>
+                            <a class="btn btn-danger" style="background-color: red;" href="logout.jsp">Logout</a>
                         </li>
+                        
+                        
                     <% 
                     } else { 
                     %>

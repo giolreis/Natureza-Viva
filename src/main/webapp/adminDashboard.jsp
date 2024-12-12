@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Painel do Administrador</title>
-    <link rel="stylesheet" href="css/userDashborad.css">
+    <link rel="stylesheet" href="../webapp/css/userDashborad.css">
 </head>
 <%@ include file="navbar.jsp" %>
 <body>

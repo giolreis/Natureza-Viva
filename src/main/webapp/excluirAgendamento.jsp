@@ -10,6 +10,7 @@
     <title>Gerenciar Agendamentos</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../webapp/css/sobrenos.css">
     <style>
         table {
             width: 80%;
@@ -117,10 +118,9 @@
         }
     }
     %>
-    <a href ="adminDashboard.jsp" class="a_outros">Voltar</a><br>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <%@ include file="footer.jsp" %>
     
 </body>
+<%@ include file="footer.jsp" %>
 </html>
