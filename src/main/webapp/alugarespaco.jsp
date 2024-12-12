@@ -70,23 +70,22 @@
                     }
                 });
             }
+           
+        function mostrarAlerta(mensagem) {
+            document.getElementById("meuAlerta").style.display = "block";
+            document.getElementById("meuAlerta").textContent = mensagem;
+
+            // Remover o alerta após alguns segundos (opcional)
+            setTimeout(function() {
+                document.getElementById("meuAlerta").style.display = "none";
+            }, 3000);
+        }
+  
         });
     </script>
-       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><style>
-        table {
-            width: 50%;
-            border-collapse: collapse;
-            margin: 50px auto;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-    </style>
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        
+  
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light">
@@ -167,7 +166,7 @@
 
     <% 
 
-        if(request.getMethod().equals("POST")){
+        if(request.getMethod().equals("POST")){ 
 
             String id_agendamento=request.getParameter("id_agendamento");
             String username = (String) session.getAttribute("username");
@@ -200,9 +199,9 @@
 
                     }
 
-                    select.close();		
-
-                    out.println("Alteração salva com sucesso!");
+                    select.close();	
+                   
+                     out.println("Alteração salva com sucesso!");
 
                 }catch (ClassNotFoundException erroClass){
                     out.println("Class Driver não foi localizado, erro = "+erroClass);}
@@ -216,5 +215,7 @@
         }
 
     %>
+     <a href="userDashboard.jsp" class="BtnVoltar">Voltar</a>
+
 </body>
 </html>

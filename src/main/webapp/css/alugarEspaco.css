@@ -1,11 +1,9 @@
-/* Geral */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background: linear-gradient(135deg, #e0f7df, #d5f3ed);
     color: #333;
-    
 }
 
 /* Barra de navegação */
@@ -62,6 +60,15 @@ body {
 }
 
 
+h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+
+
 .container {
     width: 80%;
     margin: auto;
@@ -69,48 +76,48 @@ body {
 
 /* Barra de Pesquisa (Search Bar) */
 .search-bar {
+    margin: 20px auto; /* Center horizontally */
     background-color: #fff;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    gap: 15px;
     display: flex;
     align-items: center;
-    margin-top: 20px; /* Espaço entre o header e a busca */
-    margin-bottom: 20px; /* Espaço abaixo da barra de pesquisa */
-    width: 35rem;   
-    justify-content: space-between;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centraliza a barra de pesquisa */
-}
+    width: 20rem;
+    justify-content: center;
 
-.search-bar input,
-.search-bar button {
+    flex-direction: column; /* Stack elements vertically */
+
+  }
+  
+  .search-bar input,
+  .search-bar button {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
-}
+    margin: 5px;
+  }
 
 .search-bar input[type="text"] {
     flex: 1;
-    width: 40%;
+    width: 80%;
 }
 
 .search-bar input[type="datetime-local"] {
-    width: 30%;
+    width: 5%;
 }
 
 .search-bar button {
-    background-color: #007BFF;
+    background-color: #165e22;
     color: white;
     border: none;
     cursor: pointer;
+    padding: 10px 20px;
+ 
 }
 
 .search-bar button:hover {
-    background-color: #0056b3;
+    background-color: #398659;
 }
 
 /* Container de Espaços */
@@ -155,12 +162,12 @@ body {
 }
 
 .space-card .btn-primary {
-    background-color: #007bff;
+    background-color: #00ff40;
     border: none;
 }
 
 .space-card .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #09ff00;
 }
 
 /* Calendário */
@@ -179,6 +186,43 @@ body {
     border-radius: 8px;
     padding: 10px;
 }
+table {
+    width: 50%;
+    border-collapse: collapse;
+    margin: 50px auto;
+    border: black solid 1px;
+    background-color: white;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    border: black solid 1px;
+}
+th {
+    background-color: #f4f4f4;
+    border: black solid 1px;
+}
+.search-form {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  
+  .search-input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .search-button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
 
 /* Responsividade */
 @media (max-width: 768px) {
@@ -197,4 +241,19 @@ body {
     #calendar {
         width: 90%; /* Ajuste da largura do calendário em telas pequenas */
     }
+
+ 
+}
+.BtnVoltar {
+ 
+        background-color: red; /* Cor de fundo vermelha */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 10px auto; /* Centraliza horizontalmente */
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
 }

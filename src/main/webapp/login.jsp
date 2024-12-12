@@ -43,6 +43,7 @@
                 <button class="btn btn-custom">Login</button>
                 <button class="btn btn-custom">Cadastre-se</button>
             </div>
+            
             <form method="POST" action="loginProcess.jsp" class="forms-dados">
                 <label for="nome">Nome</label>
                 <input type="text" id="nome_login" name="nome_login" class="form-control" placeholder="Digite seu nome">
@@ -51,7 +52,7 @@
                 <button type="submit" class="btn-login">Entrar</button>
             </form>
 
-        </div>
+       
 
     <div id="signup-form" style="display: none;">
         <form action="cadastroProcess.jsp" method="POST">
@@ -82,20 +83,29 @@
                 <button class="btn-login" type="submit">Cadastrar</button>
             </div>
         </form>
+        
     </div>
+          
             </div>
+           
             </div>
+     
     </div>
-
-            <div class="carousel-container">
+ 
+     </div>
+    
+             <div class="carousel-container">
             <div class="carousel">
-                <img src="images/imagePassaro.png" alt="Imagem de passaro" />
-                <img src="images/imagePlanta.png" alt="Imagem de planta" />
+                <img src="img/imagePassaro.png" alt="Imagem de passaro" />
+                <img src="img/natureza1.jpeg" alt="Imagem de planta" />
+                <img src="img/natureza2.jpg" alt="Imagem de planta" />
+                 <img src="img/natureza3.jpg" alt="Imagem de planta" />
             </div>
         <div class="disparo"></div>
     </div>
 
         </div>
+        
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 

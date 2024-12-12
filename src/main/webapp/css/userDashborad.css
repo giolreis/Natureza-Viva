@@ -124,12 +124,12 @@ h2 {
 }
 
 /* Estilos do botão "Sair" */
-.logout-container {
+.logout_container {
     margin-top: 20px;
     text-align: center;
 }
 
-.btn-sair {
+.btn_sair {
     background-color: #d9534f;
     color: white;
     padding: 10px 20px;
@@ -140,6 +140,6 @@ h2 {
     transition: background-color 0.3s ease;
 }
 
-.btn-sair:hover {
+.btn_sair:hover {
     background-color: #c9302c;
 }

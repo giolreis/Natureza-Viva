@@ -72,11 +72,9 @@ body {
 }
 /* Conteúdo */
 .content {
-    display: flex;            /* Usando flexbox para alinhar os itens */
-    justify-content: space-between;  /* Espaço entre o carrossel e o formulário */
-    align-items: flex-start;  /* Alinha os itens ao topo */
-    padding: 20px;
-    flex-wrap: wrap;      
+ 
+    
+    flex: 1;  
 }
 
 .login-box {
@@ -160,12 +158,18 @@ body {
     background: #095f1e;
     color: white;
 }
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
 
 /* Container do carrossel */
 .carousel-container {
    
     width: 30%; /* Ajuste conforme necessário */
     margin: 0 auto;
+    overflow: hidden;
 }
 #signup-form{
     margin: 10px;
@@ -177,6 +181,7 @@ body {
 .carousel {
     display: flex;
     animation: slide 15s infinite;
+
 }
 
 /* Estilo das imagens */
@@ -199,6 +204,6 @@ body {
         transform: translateX(-200%);
     }
     100% {
-        transform: translateX(0);
+        transform: translateX(-300%);
     }
 }
