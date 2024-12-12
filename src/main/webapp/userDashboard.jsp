@@ -33,7 +33,7 @@
     </nav>
     <div class="container">
         <!-- Título "Bem-vindo" -->
-        <h2>Bem-vindo, usuário!</h2>
+        <h2>Bem-vindo, <% String username = (String) session.getAttribute("username"); if (username != null) out.print(username); else out.print("Visitante"); %>!</h2>
 
         <!-- Contêiner dos botões -->
         <div class="button-container">

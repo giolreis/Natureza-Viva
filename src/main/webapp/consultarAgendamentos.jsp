@@ -17,7 +17,7 @@
         <input type="submit" value="Enviar">
     </form>
 
-    <a href ="index.jsp" class="a_outros">Voltar</a><br>
+    <a href ="adminDashboard.jsp" class="a_outros">Voltar</a><br>
 
     <% 
         if(request.getParameter("data") != null){

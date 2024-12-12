@@ -9,31 +9,71 @@
         return;
     }
 
-    // Funções de cadastro de espaço, agendamento e consulta de agendamentos
 %> --%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Painel de Administração</title>
+    <title>Painel do Administrador</title>
+    <link rel="stylesheet" href="css/userDashborad.css">
 </head>
 <body>
-    <h2>Bem-vindo, Administrador!</h2>
-    <p>O que você gostaria de fazer?</p>
-    
-    <ul>
-        <li><a href="cadastrarEspaco.jsp">Cadastrar Espaços</a></li>
-        <li><a href="cadastroAgendamento.jsp">Cadastrar Agendamentos</a></li>
-        <li><a href="excluirAgendamento.jsp">Excluir Agendamentos</a></li>
-        <li><a href="consultarAgendamentos.jsp">Consultar Agendamentos por Mês</a></li>
-        <li><a href="consultarAgendamentosEspaco.jsp">Consultar Agendamentos por Espaço</a></li>
-        <li><a href="alterarExcluirEspaco.jsp">Alterar ou Excluir Espaços</a></li>
-        <li><a href="confirmarAgendamento.jsp">Confirmar Agendamento</a></li>
-    </ul>
+  <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img class="icon" src="img/iconUserPanel.png" alt="Ícone do usuário"> <!-- Ícone -->
+            Painel do Administrador
+        </a>
+            <div class="navbar-nav">
+                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="#">Ajuda</a>
+                <a class="nav-link" href="#">Perfil</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <!-- Título "Bem-vindo" -->
+        <h2>Bem-vindo, <% String username = (String) session.getAttribute("username"); if (username != null) out.print(username); else out.print("Visitante"); %>!</h2>
 
-    <form action="logout.jsp" method="POST">
-        <a href="login.jsp?action=logout" class="a_outros">Sair</a><br>
-    </form>
+        <!-- Contêiner dos botões -->
+        <div class="button-container">
+            <div class="button-box">
+                <img src="img/alugarEspaco.avif" alt="Alugar Espaço">
+                <a href="cadastrarEspaco.jsp" class="btn">Cadastrar Espaços</a>
+            </div>
+            <div class="button-box">
+                <img src="img\editarAluguel.jpg" alt="Editar Aluguel">
+                <a href="cadastroAgendamento.jsp" class="btn">Cadastrar Agendamentos</a>
+            </div>
+            <div class="button-box">
+                <img src="img\consultarAluguel.jpg" alt="Consultar Alugueis">
+                <a href="excluirAgendamento.jsp" class="btn">Excluir Agendamentos</a>
+            </div>
+            <div class="button-box">
+                <img src="img\consultarAluguel.jpg" alt="Consultar Alugueis">
+                <a href="consultarAgendamentos.jsp" class="btn">Consultar Agendamentos por Mês</a>
+            </div>
+            <div class="button-box">
+                <img src="img\consultarAluguel.jpg" alt="Consultar Alugueis">
+                <a href="consultarAgendamentosEspaco.jsp" class="btn">Consultar Agendamentos por Espaço</a>
+            </div>
+            <div class="button-box">
+                <img src="img\consultarAluguel.jpg" alt="Consultar Alugueis">
+                <a href="confirmarAgendamento.jsp" class="btn">Alterar ou Excluir Espaços</a>
+            </div>
+            <div class="button-box">
+                <img src="img\consultarAluguel.jpg" alt="Consultar Alugueis">
+                <a href="consultarAluguel.jsp" class="btn">Confirmar Agendamento</a>
+            </div>
+        </div>
+
+        <!-- Botão de Sair -->
+        <div class="logout-container">
+            <form action="logout.jsp" method="POST">
+               <a href="login.jsp?action=logout" class="btn_sair">Sair</a><br>
+            </form>
+        </div>
+    </div>
 
     <%-- <%
          out.println(username);
