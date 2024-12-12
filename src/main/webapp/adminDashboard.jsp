@@ -59,11 +59,11 @@
             </div>
             <div class="button-box">
                 <img src="img\consultarAluguel.jpg" alt="Consultar Alugueis">
-                <a href="confirmarAgendamento.jsp" class="btn">Alterar ou Excluir Espaços</a>
+                <a href="alterarExcluirEspaco.jsp" class="btn">Alterar ou Excluir Espaços</a>
             </div>
             <div class="button-box">
                 <img src="img\consultarAluguel.jpg" alt="Consultar Alugueis">
-                <a href="consultarAluguel.jsp" class="btn">Confirmar Agendamento</a>
+                <a href="confirmarAgendamento.jsp" class="btn">Confirmar Agendamento</a>
             </div>
         </div>
 
